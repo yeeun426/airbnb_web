@@ -1,0 +1,85 @@
+.btn_swiper {
+    display: flex;
+    flex-direction: row;
+}
+
+.HeaderSwiper .swiper-button-prev{
+  top: 45px;
+  box-shadow: -10px 6px 24px 30px white;
+}
+
+.HeaderSwiper .swiper-button-next{
+  top: 45px;
+  box-shadow: 10px 6px 24px 30px white;
+  right: 0px;
+}
+
+.swiper-button-prev, .swiper-button-next{
+  background-color: white;
+  background-size: 17px 17px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 28px;
+  height: 28px;
+  border: 50%;
+  border-radius: 50%;
+  border: 0.5px solid rgb(0 0 0 / 0.3);  
+}
+
+.swiper-button-next{
+  background-image: url("../img/arrownext.JPG");
+}
+
+.swiper-button-prev{
+  background-image: url("../img/arrowprev.JPG");
+}
+
+.HeaderSwiper .swiper-slide{
+  width: auto !important;
+  padding: 0 10px;
+}
+
+.HeaderSwiper .swiper-wrapper {
+  gap: 32px;
+}
+
+.HeaderSwiper .swiper-item{
+  width: 1250px;
+}
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled{
+  opacity: 0;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+  display: none;
+}
+
+.header_filter{ 
+  border-radius: 12px;
+  display: flex;
+  padding: 15px 16px;
+  border: 1px solid #DDDDDD;
+  font-size: 12px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.header_filter svg{
+  margin-right: 6px
+}
+
+.swiper_filter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.place_filter img{
+  filter: contrast(calc(13 / 44));
+}
+
+.place_filter:hover .detail_filter {
+  color: black;
+  filter: none;
+}

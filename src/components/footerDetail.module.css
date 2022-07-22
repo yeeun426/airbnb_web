@@ -1,0 +1,37 @@
+/* footer */
+:global .FooterDetails {
+    font-size: 14px;
+    position: relative !important;
+    background-color: rgb(247, 247, 247) !important;
+    border-top: 1px solid #dddddd;
+}
+
+.footer_subtitle{
+    font-weight: bold;
+    text-align: left;
+}
+
+.Detail_footer {
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    width: 286px;
+}
+
+.footer_container{
+    display: flex;
+
+    padding: 48px 80px;
+    justify-content: center;
+}
+
+.Detail_footer button{
+    font-size: 14px;
+    text-align: left;
+    align-self: normal;    
+    margin-top: 16px;
+}
+
+.Detail_footer button:hover{
+    text-decoration: underline;
+}

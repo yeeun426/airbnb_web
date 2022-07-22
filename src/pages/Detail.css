@@ -1,0 +1,228 @@
+#detail_header {
+    width: 1120px;
+}
+
+.middle_content{
+    text-align: -webkit-center;
+}
+
+#search_input{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#info_container{
+    width: 1120px;
+}
+
+.name_container{
+    display: flex;
+    font-size: 26px;
+    font-weight: 600;
+    
+    padding-top: 24px;
+}
+
+.info{
+    padding: 0px 80px;
+    text-align: -webkit-center;
+}
+
+.name_container svg{
+    margin-right: 12px;
+}
+
+.name_sub svg {
+    margin-right: 8px;
+}
+
+.name_sub {
+    display: flex;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 15px;
+    text-decoration: underline;
+    justify-content: space-between;
+}
+
+#share_save {
+    display: flex;
+}
+
+.img_container {
+    padding-top: 24px;
+    display: flex;
+}
+
+.img_container img{
+    object-fit: cover;
+    vertical-align: bottom;
+    width: 100%;
+}
+
+#first_img img{
+    border-bottom-left-radius: 15px;
+    height: 370px;
+    border-top-left-radius: 15px;
+}
+
+#share {
+    margin-right: 20px;
+}
+
+#first_img {
+    width: 50%;
+}
+
+.sub_img {
+    width: 25%;
+    height: 370px;
+    padding-left: 8px;
+
+}
+
+.first_pict, .second_pict{
+    height: 50%;
+}
+
+#third_img {
+    border-top-right-radius: 15px;
+}
+
+#fourth_img {
+    border-bottom-right-radius: 15px;
+}
+
+.first_pict {
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+
+#host_container [role="txt"] {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+#host_container {
+    text-align: left;
+    border-bottom : 1px solid #dddddd;   
+    display: flex; 
+    padding-top: 48px; 
+    padding-bottom: 24px;
+    justify-content: space-between;
+}
+
+ul li {
+    list-style-type: circle; 
+    display: inline-block;
+}
+
+.host_info {
+    width: 56px;
+    height: 56px;
+}
+
+.left_info {
+    float: left;
+    width: 58.333333333333336%
+}
+
+#total_info {
+    text-align: left;
+    width: 1120px;
+    display: flex;
+}
+
+#enjoy_info {
+    padding: 32px 0;
+    border-bottom : 1px solid #dddddd;   
+}
+
+.intrd_enjoy {
+    margin-left: 16px;
+    text-align: left;
+}
+
+#aircover {
+    padding: 32px 0;
+    border-bottom : 1px solid #dddddd;  
+    line-height: 1.5; 
+}
+
+.btn_underline{
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+#detail_hotel{
+    border-bottom : 1px solid #dddddd;   
+}
+
+.sub_img button{
+    background-color: transparent;
+    border: none;
+}
+
+#place_hotel{
+    padding: 48px 0;
+}
+
+.title_txt{
+    font-weight: 600;
+    font-size: 22px;
+    padding-bottom: 24px;
+}
+
+.list_enjoy{
+    display: flex;
+    margin-bottom: 24px;
+}
+
+#box_place{
+    height:93px;
+    width:157px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+#place_hotel svg{
+    margin-bottom: 16px;   
+}
+
+#place_hotel {
+    border-bottom : 1px solid #dddddd;   
+}
+
+.right_info{
+    position: relative;
+    width: 33.33333333333333%;
+    margin-left: 8.333333333333332%;
+    margin-right: 0;
+}
+
+#box{
+    top: 80px;
+    /* position: sticky; */
+    padding: 24px;
+    margin-top: 48px;
+    height: 260px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+}
+
+#facilities_hotel{
+    padding: 48px 0;
+}
+
+.right_box{
+    top: 80px;
+    position: sticky;
+    margin-bottom: 48px;
+}
+

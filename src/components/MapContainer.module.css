@@ -1,0 +1,46 @@
+.zoom_btn {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+    border-radius: 8px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+
+    z-index: 9999;
+    position: absolute;
+    margin-right: 24px;
+    margin-top: 24px;
+    top: 0px;
+    right: 0px;
+}
+
+.zoom_btn button{
+    width: 40px;
+    height: 40px;
+}
+
+.border_zoom {
+    height: 1px !important;
+    width: 80% !important;
+    background: black !important;
+    opacity: 0.1 !important;
+}
+
+.mylocation{
+    z-index: 9999;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    margin-right: 24px;
+    margin-top: 120px;
+    width: 40px;
+    height: 40px;
+
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    text-align: -webkit-center;
+
+    transition: transform 850ms cubic-bezier(0.25, 1, 0.5, 1) 0s;
+}

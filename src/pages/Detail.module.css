@@ -1,0 +1,315 @@
+.fac_home svg{
+    margin-right: 16px;
+}
+
+.fac_home{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding-bottom: 16px;
+    padding-left: 8px;
+    box-sizing: border-box;
+}
+
+.facilities{
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.btn_facility{
+    border: 1px solid black;
+    border-radius: 8px;
+    font-weight: bold;
+    width: fit-content;
+    padding: 13px 23px;
+    margin-top: 24px;
+}
+
+.detail_item {
+    padding: 48px 0;
+    border-bottom : 1px solid #dddddd;   
+}
+
+.calender td{
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.month{
+    font-weight: bold;
+    padding: 30px 0;
+}
+
+.calender {
+    display: flex;
+    text-align: -webkit-center;
+    font-size: 14px;
+}
+
+.calender_content{
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.calender_item{
+    padding: 0 13px;
+}
+
+.remove_day{
+    float: right;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.another_info{
+    width: 1120px;
+    text-align: left;  
+}
+
+
+.another_txt{
+    padding-bottom: 24px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.review_oneitem{
+    display: flex;
+    width: 33.3333%;
+    margin-right: 8.3333%;
+}
+
+.review_twoitem{
+    display: flex;
+    width: 33.3333%;
+    margin-right: 8.3333%;
+}
+
+.review_list svg{
+    margin-right: 16px
+}
+
+.another_item{
+    padding: 48px 0;
+    border-top : 1px solid #dddddd; 
+}
+
+.Declaration {
+    display: flex;
+    margin-top: 24px;
+    justify-content: center;
+    font-size: 14px;
+    color: #717171;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.Declaration svg{
+    margin-right: 16px;
+    color: #717171;
+}
+
+.btn_reserv{
+    padding: 14px 24px;
+    width: 100%;
+    background-color:#E31C5F;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 16px;
+    font-size: 16px;
+}
+
+#price{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+#price_day{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.price_box{
+    margin-bottom: 24px;
+}
+.checkinout {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.check_day{
+    /* padding: 26px 12px 10px 12px; */
+    font-size: 14px;
+}
+
+.btn_check{
+    display:flex;
+    flex-direction: row;
+    /* border: 1px solid black; */
+
+    width: 100%;
+}
+
+.btn_upper{
+    width: 50%;
+    border: 1px solid rgb(176, 176, 176);
+    text-align: left;
+    padding: 12px;
+}
+
+.btn_guest{
+    width: 100%;
+    border: 1px solid rgb(176, 176, 176);
+    text-align-last: left;
+    padding: 12px;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hosting_area{
+    width: 100%;
+    height: 480px;
+    background-color: rgb(179 230 244);
+    position: relative;
+    
+}
+
+.hosting_area svg {
+    /* top: 50%;
+    position: absolute;
+    right: 50%; */
+    margin-top: 10px;
+    fill: white;
+}
+
+#circle_home {
+    background-color: rgb(179 230 244);
+    text-align: -webkit-center;
+    top: 50%;
+    right: 50%;
+    position: absolute;
+    box-shadow: 0 0 0px 30px rgb(223 20 97 / 18%);
+}
+
+.pos_txt{
+    font-size: 14px;
+    padding: 16px;
+    background-color: white;
+    width: fit-content;
+    position: absolute;
+    right: 39%;
+    top: 38%;
+    border-radius: 8px;
+    box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px;
+}
+
+.img_host{
+    width: 64px;
+    height: 64px;
+    margin-right: 16px;
+}
+
+.regist_txt{
+    font-size: 14px;
+    color: #717171;
+}
+
+
+.host_review{
+    display: flex;
+}
+
+.host_review svg{
+    margin-right: 12px;
+}
+
+.tag_host{
+    display: flex;
+    margin-bottom: 24px;
+}
+
+.host_response{
+    margin-bottom: 16px;
+}
+
+:global .btn_contactHost{
+    padding: 13px 23px;
+    margin-top: 16px;
+    border: 1px solid black;
+    width: fit-content;
+    font-size: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.security_host{
+    display: flex;
+    font-size: 12px;
+    margin-top: 24px;
+    max-width: 300px;
+}
+
+.security_host svg{
+    margin-right: 16px;
+}
+
+.host_item{
+    display: flex;
+}
+
+.host_left{
+    width: 41.6667%;
+}
+
+.host_right{
+    width: 41.6667%;
+    margin-left: 8.3333%;
+}
+
+#host_info{
+    line-height: 1.4;
+}
+
+.rule_hotels{
+    font-size: 16px;
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+.sub_rules{
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.sub_rules svg{
+    margin-right: 12px;
+}
+
+:global #rule_home{
+    display: flex;
+}
+
+.rules{
+    width: 33.33333%;
+    margin-right: 32px;
+}
+
+.see_more{
+    margin-top: 24px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.see_more svg{
+    margin-left: 5px;
+}
+
+.Detail .total_footer {
+    background-color: rgb(247, 247, 247) !important;
+}
