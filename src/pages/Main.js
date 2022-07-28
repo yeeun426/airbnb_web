@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, {useState} from "react";
 import '../App.css'
 import styles from './Main.module.css'
@@ -21,6 +21,12 @@ SwiperCore.use([Navigation, Pagination])
 function Main() {
     
     const [viewMap, setViewMap] = useState(false)
+
+    const navigate = useNavigate();
+    
+    const onClickHost = () => {
+        navigate(`/behost`);
+    };
 
     return (
     <div className="App">
@@ -48,11 +54,11 @@ function Main() {
             </div>
 
             <div className= "header_content" id="third_content">
-                <Link to="/behost">
-                  <button className="header_btn" id="BeHost" onClick="location.href='host.html'">
+                {/* <Link to="/behost"> */}
+                  <button className="header_btn" id="BeHost" onClick={onClickHost}>
                     호스트 되기
                   </button>
-                </Link>
+                {/* </Link> */}
                 <button className="header_btn" style={{width:'40px', height:'42px'}}>
                   <img src={earth} alt="earth" style={{width: '16px', height: "16px"}}/>
                   </button>

@@ -1,12 +1,24 @@
-import React from "react";  
+import { useEffect, useState } from "react";  
 import './Behost.css'
 import logo from "../img/logo_white.png"
 import { Link } from 'react-router-dom';
 import MapContainer from "../components/MapContainer";
 import Footer from "../components/Footer";
 import FooterDetail from "../components/FooterDetail";
+import host_data from '../data/behost.json';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-function Behost() {
+function Behost(id) {
+
+    const [data, setDetail] = useState([]);
+
+    useEffect(() => {
+        host_data.details.map((item) => {
+            if(id === item.id) {
+                setDetail(item);
+            }
+        })
+    })
     return (
     <div className="behost">
         <div className="video_container" style={{height: "480px"}}>
@@ -75,31 +87,38 @@ function Behost() {
             <br/>호스팅하실 수 있습니다    
 
             <div class = "swiper mySwiper">
-                <div className="small_img swiper-wrapper">
-                    <button class = "swiper-slide">
+                    <Swiper
+                        className = "small_img"
+                        spaceBetween={50}
+                        slidesPerView={3}
+                        navigation
+                    >
+                    <SwiperSlide>
                         <img className="detail_filter" alt="detail_fileter" src="https://a0.muscache.com/im/pictures/4f3047b2-58ea-4335-8430-dfc6f436634d.jpg"/> 
-                    </button>  
+                    </SwiperSlide>  
                     
-                    <button class = "swiper-slide">
+                    <SwiperSlide>
                         <img className="detail_filter" alt="detail_fileter"src="https://a0.muscache.com/im/pictures/31fb3cb1-c2a1-4e14-a9e9-6f279991790b.jpg"/>
-                    </button>
+                    </SwiperSlide>
 
-                    <button class = "swiper-slide">
+                    <SwiperSlide>
                         <img className="detail_filter" alt="detail_fileter" src="https://a0.muscache.com/im/pictures/a464d642-695e-4d2c-aa51-2302de067f45.jpg"/>    
-                    </button>
+                    </SwiperSlide>
 
-                    <button class = "swiper-slide">
+                    <SwiperSlide>
                         <img className="detail_filter" alt="detail_fileter" src="https://a0.muscache.com/im/pictures/d8627b07-b42c-40a1-807f-1eac9de39311.jpg?im_w=720"/> 
-                    </button>
+                    </SwiperSlide>
  
-                    <button class = "swiper-slide">
+                    <SwiperSlide>
                         <img className="detail_filter" alt="detail_fileter" src="https://a0.muscache.com/im/pictures/b56f3d7c-5006-4ed2-967a-c421e3275b1f.jpg?im_w=720"/>  
-                    </button>
+                    </SwiperSlide>
 
-                    <button class = "swiper-slide">
+                    <SwiperSlide>
                         <img className="detail_filter" alt="detail_fileter" src="https://a0.muscache.com/im/pictures/334530d8-2ad6-40e8-8fd2-4ac0835e693a.jpg?im_w=720"/>
-                    </button>                
-                </div>
+                    </SwiperSlide>                
+                </Swiper>
+
+                <div className="img-detail">{data.detail}</div>
             </div>
         </div>
     </div>
