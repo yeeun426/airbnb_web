@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, {useState} from "react";
-import '../App.css'
-import styles from './Main.module.css'
+import '../App.css';
+import styles from './Main.module.css';
+// import styled, { css } from 'styled-components';
 
 import MapContainer from '../components/MapContainer'
 import Footer from '../components/Footer'
@@ -27,7 +28,7 @@ function Main() {
     const onClickHost = () => {
         navigate(`/behost`);
     };
-
+    
     return (
     <div className="App">
       <div className="header">
@@ -105,11 +106,26 @@ function Main() {
 }
 
 const TripList = () => {
+    const [fill, setFill] = useState(['rgba(0, 0, 0, 0.5)']);
+
+    const onClickLike = () => {
+        fill === 'rgba(0, 0, 0, 0.5)' ? setFill('palevioletred'): setFill('rgba(0, 0, 0, 0.5)');
+        console.log("좋아요")
+    };
+
+    const [fill2, setFill2] = useState(['rgba(0, 0, 0, 0.5)']);
+
+    const onClickLike2 = () => {
+        fill === 'rgba(0, 0, 0, 0.5)' ? setFill2('palevioletred'): setFill2('rgba(0, 0, 0, 0.5)');
+        console.log("좋아요")
+    };
+
     return(
     <div className="main_container">
-        <Link to="/Detail" style={{ textDecoration: 'none', color:"black"}}>
-            <div className={styles.container} onClick="location.href='detail.html'">
+        <div style={{ textDecoration: 'none', color:"black"}}>
+            <div className={styles.container}>
                 <div id="main_img" style={{position: 'relative'}}>
+                <Link to="/Detail">
                     <Swiper
                         className={styles.main_detail}
                         spaceBetween={50}
@@ -133,7 +149,15 @@ const TripList = () => {
                             <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
                         </SwiperSlide>
                     </Swiper>
-                    <svg className={styles.like_icon} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path></svg>
+                    </Link>
+                    <svg onClick = {onClickLike}
+                        id={1}
+                        style ={{fill: fill}} 
+                        className={styles.like_icon} 
+                        viewBox="0 0 32 32" 
+                        xmlns="http://www.w3.org/2000/svg" >
+                        <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+                    </svg>
                 </div>
                 
                 <div className={styles.first_line}>
@@ -147,7 +171,7 @@ const TripList = () => {
                 <div className="detail_info day">8월 18일~24일</div>
                 <div className="detail_info price">\886,626 /박</div>
             </div>
-        </Link>
+        </div>
 
         <div className="container">
             <div id="main_img" style={{position: 'relative'}}>
@@ -174,7 +198,14 @@ const TripList = () => {
                         <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
                     </SwiperSlide>
                 </Swiper>
-                <svg className={styles.like_icon} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path></svg>
+                <svg 
+                    // onClick = {onClickLike}
+                    // style ={{fill: fill}} 
+                    className={styles.like_icon} 
+                    viewBox="0 0 32 32" 
+                    xmlns="http://www.w3.org/2000/svg" >
+                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+                </svg>              
             </div>
 
                 <div className={styles.first_line}>
@@ -214,7 +245,14 @@ const TripList = () => {
                         <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
                     </SwiperSlide>
                 </Swiper>
-                <svg className={styles.like_icon} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path></svg>
+                <svg 
+                    // onClick = {onClickLike}
+                    // style ={{fill: fill}} 
+                    className={styles.like_icon} 
+                    viewBox="0 0 32 32" 
+                    xmlns="http://www.w3.org/2000/svg" >
+                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+                </svg>               
             </div>
 
             <div className={styles.first_line}>
@@ -254,7 +292,14 @@ const TripList = () => {
                         <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
                     </SwiperSlide>
                 </Swiper>
-                <svg className={styles.like_icon} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path></svg>
+                <svg 
+                    // onClick = {onClickLike}
+                    // style ={{fill: fill}} 
+                    className={styles.like_icon} 
+                    viewBox="0 0 32 32" 
+                    xmlns="http://www.w3.org/2000/svg" >
+                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+                </svg>            
             </div>
 
             <div className={styles.first_line}>
@@ -273,7 +318,14 @@ const TripList = () => {
         <div className="container">
             <div id="main_img" style={{position: 'relative'}}>
                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/f62e1b1a-d6af-438b-82ce-95c51a4e0ca1.jpeg?im_w=720"/>
-                <svg className={styles.like_icon} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path></svg>
+                <svg 
+                    // onClick = {onClickLike}
+                    // style ={{fill: fill}} 
+                    className={styles.like_icon} 
+                    viewBox="0 0 32 32" 
+                    xmlns="http://www.w3.org/2000/svg" >
+                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+                </svg>               
             </div>
 
             <div className={styles.first_line}>
@@ -292,7 +344,14 @@ const TripList = () => {
         <div className="container">
             <div id="main_img" style={{position: 'relative'}}>
                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/miso/Hosting-555701192524977533/original/234db0e5-8ef3-45c4-9cf9-d2c5eb8ad0c0.jpeg?im_w=720"/>
-                <svg className={styles.like_icon} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path></svg>
+                <svg 
+                    // onClick = {onClickLike}
+                    // style ={{fill: fill}} 
+                    className={styles.like_icon} 
+                    viewBox="0 0 32 32" 
+                    xmlns="http://www.w3.org/2000/svg" >
+                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+                </svg>               
             </div>
 
             <div className={styles.first_line}>
@@ -310,7 +369,13 @@ const TripList = () => {
         <div className="container">
             <div id="main_img" style={{position: 'relative'}}>
                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/177ed8a7-557b-480f-8319-4f8330e2c692.jpg?im_w=720"/>
-                <svg className={styles.like_icon} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path></svg>
+                <svg onClick = {onClickLike}
+                    style ={{fill: fill}} 
+                    className={styles.like_icon} 
+                    viewBox="0 0 32 32" 
+                    xmlns="http://www.w3.org/2000/svg" >
+                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+                </svg>               
             </div>
 
             <div className={styles.first_line}>
@@ -328,7 +393,14 @@ const TripList = () => {
         <div className="container">
             <div id="main_img" style={{position: 'relative'}}>
                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/78fb8268-b999-4389-b072-e2a66910e41b.jpg?im_w=720"/>
-                <svg className={styles.like_icon} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path></svg>
+                <svg 
+                    // onClick = {onClickLike}
+                    // style ={{fill: fill}} 
+                    className={styles.like_icon} 
+                    viewBox="0 0 32 32" 
+                    xmlns="http://www.w3.org/2000/svg" >
+                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+                </svg>               
             </div>
 
             <div className={styles.first_line}>
@@ -347,5 +419,3 @@ const TripList = () => {
 }
 
 export default Main;
-
-  

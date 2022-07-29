@@ -42,16 +42,17 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
-/* 시작 */
 .behost {
     overflow: hidden;
     font-weight: 600;
     text-align: center;
+    white-space: pre-wrap;
 }
 .video_container {
     display: flex;
@@ -158,6 +159,16 @@ table {
     display: flex !important;
     align-items: flex-end !important; */
 }
+
+.swiper-slide .detail_txt {
+    display: none;
+}
+
+.swiper-slide.swiper-slide-next .detail_txt{
+    display: flex;
+    flex-direction: column;
+}
+
 
 .second_item p {
     margin-bottom: 24px !important;
@@ -307,4 +318,27 @@ object-fit: contain;
 vertical-align: bottom;
 width: 630px;
 height: 750px;
+}
+
+.img-detail{
+    font-size: 25px;
+    font-weight: 500;
+    text-align: left;
+    margin: 48px 0px 34px 0px;
+    line-height: 1.15;
+}
+
+.img-detail-sign {
+    object-fit: contain !important;
+    object-position: left center !important;
+    vertical-align: bottom !important;
+    height: 32px !important;
+}
+
+.img-detail-country{
+    font-size: 16px;
+    color: #717171;
+    font-weight: 500;
+    margin-top: 24px;
+    text-align: left;
 }

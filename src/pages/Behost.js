@@ -1,24 +1,16 @@
-import { useEffect, useState } from "react";  
+/* eslint-disable array-callback-return */
 import './Behost.css'
 import logo from "../img/logo_white.png"
 import { Link } from 'react-router-dom';
 import MapContainer from "../components/MapContainer";
 import Footer from "../components/Footer";
 import FooterDetail from "../components/FooterDetail";
-import host_data from '../data/behost.json';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-function Behost(id) {
+import HostSlider from "../components/hostSlider";
 
-    const [data, setDetail] = useState([]);
-
-    useEffect(() => {
-        host_data.details.map((item) => {
-            if(id === item.id) {
-                setDetail(item);
-            }
-        })
-    })
+function Behost(){
+    
     return (
     <div className="behost">
         <div className="video_container" style={{height: "480px"}}>
@@ -92,33 +84,58 @@ function Behost(id) {
                         spaceBetween={50}
                         slidesPerView={3}
                         navigation
+                        freeMode ={true}
                     >
                     <SwiperSlide>
+                        <></>
+                    </SwiperSlide>
+
+                    <SwiperSlide style={{display: 'flex', 'flex-direction': 'column'}}>
                         <img className="detail_filter" alt="detail_fileter" src="https://a0.muscache.com/im/pictures/4f3047b2-58ea-4335-8430-dfc6f436634d.jpg"/> 
+                        <div className="detail_txt">
+                        <HostSlider id = {0} />
+                        </div>
                     </SwiperSlide>  
                     
-                    <SwiperSlide>
+                    <SwiperSlide style={{display: 'flex', 'flex-direction': 'column'}}>
                         <img className="detail_filter" alt="detail_fileter"src="https://a0.muscache.com/im/pictures/31fb3cb1-c2a1-4e14-a9e9-6f279991790b.jpg"/>
+                        <div className="detail_txt">
+                        <HostSlider id = {1} />
+                        </div>
                     </SwiperSlide>
 
-                    <SwiperSlide>
+                    <SwiperSlide style={{display: 'flex', 'flex-direction': 'column'}}>
                         <img className="detail_filter" alt="detail_fileter" src="https://a0.muscache.com/im/pictures/a464d642-695e-4d2c-aa51-2302de067f45.jpg"/>    
+                        <div className="detail_txt">
+                        <HostSlider id = {2} />
+                        </div>
                     </SwiperSlide>
 
-                    <SwiperSlide>
+                    <SwiperSlide style={{display: 'flex', 'flex-direction': 'column'}}>
                         <img className="detail_filter" alt="detail_fileter" src="https://a0.muscache.com/im/pictures/d8627b07-b42c-40a1-807f-1eac9de39311.jpg?im_w=720"/> 
+                        <div className="detail_txt">
+                        <HostSlider id = {3} />
+                        </div>
                     </SwiperSlide>
  
-                    <SwiperSlide>
+                    <SwiperSlide style={{display: 'flex', 'flex-direction': 'column'}}>
                         <img className="detail_filter" alt="detail_fileter" src="https://a0.muscache.com/im/pictures/b56f3d7c-5006-4ed2-967a-c421e3275b1f.jpg?im_w=720"/>  
+                        <div className="detail_txt">
+                        <HostSlider id = {4} />
+                        </div>
                     </SwiperSlide>
 
-                    <SwiperSlide>
+                    <SwiperSlide style={{display: 'flex', 'flex-direction': 'column'}}>
                         <img className="detail_filter" alt="detail_fileter" src="https://a0.muscache.com/im/pictures/334530d8-2ad6-40e8-8fd2-4ac0835e693a.jpg?im_w=720"/>
-                    </SwiperSlide>                
-                </Swiper>
+                        <div className="detail_txt">
+                        <HostSlider id = {5} />
+                        </div>
+                    </SwiperSlide>   
 
-                <div className="img-detail">{data.detail}</div>
+                    <SwiperSlide>
+                        <></>
+                    </SwiperSlide>              
+                </Swiper>
             </div>
         </div>
     </div>
