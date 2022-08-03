@@ -121,3 +121,10 @@ transform: scale(1.04)
 :global .main_map {
     height: 100vh;
 }
+
+.sookso_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(auto, 1fr);
+    grid-gap: 24px;
+}

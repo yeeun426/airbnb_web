@@ -3,6 +3,9 @@ import styles from './MapContainer.module.css'
 const { kakao } = window;
 
 const MapContainer = ({ searchPlace }) => {
+
+  const [position, setPostion] = useState()
+  
   const [map, setMap ] = useState();
   // 검색결과 배열에 담아줌W
     useEffect(() => {
@@ -13,7 +16,6 @@ const MapContainer = ({ searchPlace }) => {
         level: 7, // 지도의 확대 레벨
       };
       const map = new kakao.maps.Map(container, options);
-
       //useState밖으로 map정보를 가져옴 -> useState
       setMap(map)
     },[]);  

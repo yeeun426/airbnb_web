@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import '../App.css';
 import styles from './Main.module.css';
 // import styled, { css } from 'styled-components';
+import place from '../data/TravelPlace.json'
 
 import MapContainer from '../components/MapContainer'
 import Footer from '../components/Footer'
@@ -106,49 +107,48 @@ function Main() {
 }
 
 const TripList = () => {
-    const [fill, setFill] = useState(['rgba(0, 0, 0, 0.5)']);
+    const [fill, setFill] = useState('rgba(0, 0, 0, 0.5)');
 
     const onClickLike = () => {
         fill === 'rgba(0, 0, 0, 0.5)' ? setFill('palevioletred'): setFill('rgba(0, 0, 0, 0.5)');
         console.log("좋아요")
     };
-
-    const [fill2, setFill2] = useState(['rgba(0, 0, 0, 0.5)']);
-
-    const onClickLike2 = () => {
-        fill === 'rgba(0, 0, 0, 0.5)' ? setFill2('palevioletred'): setFill2('rgba(0, 0, 0, 0.5)');
-        console.log("좋아요")
-    };
+    
+    const kind = "섬" 
+    const kindList = place.place.filter(place => (place.kind === kind))
+    // filter()를 사용해 kindList라는 새 배열을 만듦
+    // place 객체 속의 kind는 위에서 변수 kind값이 됨.
 
     return(
     <div className="main_container">
-        <div style={{ textDecoration: 'none', color:"black"}}>
-            <div className={styles.container}>
-                <div id="main_img" style={{position: 'relative'}}>
-                <Link to="/Detail">
-                    <Swiper
-                        className={styles.main_detail}
-                        spaceBetween={50}
-                        slidesPerView={1}
-                        navigation
-                        pagination={{ clickable: true }}
-                        >
-                        <SwiperSlide>
-                            <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/373443ec-b377-4181-b753-3a2f3508c2b3.jpg?im_w=720"/>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/7c586cfa-6a5c-4ec1-8fcd-5890b6a50769.jpg?im_w=720"/>
-                        </SwiperSlide>                    
-                        <SwiperSlide>
-                            <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/4ee4b710-db54-417a-a2ee-9a3500cd0879.jpg?im_w=720"/>
-                        </SwiperSlide>                    
-                        <SwiperSlide>
-                            <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/e24c13b9-dd2a-4e15-9845-dd588a884e39.jpg?im_w=720"/>
-                        </SwiperSlide>                    
-                        <SwiperSlide>
-                            <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
-                        </SwiperSlide>
-                    </Swiper>
+        <div className={styles.sookso_container} style={{ textDecoration: 'none', color:"black"}}>
+        {kindList.map((place) => (
+            <div className={styles.container} key={place.id}>
+                <div key={place.kind} id="main_img" style={{position: 'relative'}}>
+                    <Link to="/Detail">
+                        <Swiper
+                            className={styles.main_detail}
+                            spaceBetween={50}
+                            slidesPerView={1}
+                            navigation
+                            pagination={{ clickable: true }}
+                            >
+                            <SwiperSlide>
+                                <img className="detail_img" alt="detail_img" src={place.img}/>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/7c586cfa-6a5c-4ec1-8fcd-5890b6a50769.jpg?im_w=720"/>
+                            </SwiperSlide>                    
+                            <SwiperSlide>
+                                <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/4ee4b710-db54-417a-a2ee-9a3500cd0879.jpg?im_w=720"/>
+                            </SwiperSlide>                    
+                            <SwiperSlide>
+                                <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/e24c13b9-dd2a-4e15-9845-dd588a884e39.jpg?im_w=720"/>
+                            </SwiperSlide>                    
+                            <SwiperSlide>
+                                <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
+                            </SwiperSlide>
+                        </Swiper>
                     </Link>
                     <svg onClick = {onClickLike}
                         id={1}
@@ -159,263 +159,263 @@ const TripList = () => {
                         <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
                     </svg>
                 </div>
-                
-                <div className={styles.first_line}>
-                    <div className="detail_info title">MV, 몰디브</div>
-                    <div>
-                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
-                        <span>NEW</span>
-                    </div>
-                </div>
-                <div className="detail_info distance">6,596km 거리</div>
-                <div className="detail_info day">8월 18일~24일</div>
-                <div className="detail_info price">\886,626 /박</div>
-            </div>
-        </div>
-
-        <div className="container">
-            <div id="main_img" style={{position: 'relative'}}>
-                <Swiper
-                    className={styles.main_detail}
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    navigation
-                    pagination={{ clickable: true }}
-                    >
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/2f15fd34-ad65-4b22-a276-50c298cbae3e.jpg?im_w=720"/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/7c586cfa-6a5c-4ec1-8fcd-5890b6a50769.jpg?im_w=720"/>
-                    </SwiperSlide>                    
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/4ee4b710-db54-417a-a2ee-9a3500cd0879.jpg?im_w=720"/>
-                    </SwiperSlide>                    
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/e24c13b9-dd2a-4e15-9845-dd588a884e39.jpg?im_w=720"/>
-                    </SwiperSlide>                    
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
-                    </SwiperSlide>
-                </Swiper>
-                <svg 
-                    // onClick = {onClickLike}
-                    // style ={{fill: fill}} 
-                    className={styles.like_icon} 
-                    viewBox="0 0 32 32" 
-                    xmlns="http://www.w3.org/2000/svg" >
-                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
-                </svg>              
-            </div>
 
                 <div className={styles.first_line}>
-                    <div className="detail_info title">MV, 몰디브</div>
-                    <div>
-                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
-                        <span>4.96</span>
-                    </div>
+                    <div className="detail_info title">{place.country}</div>
+                        {/* <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
+                        <span>NEW</span> */}
+                        {place.new ? 
+                            <div>
+                                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
+                                <span>NEW</span>
+                            </div>
+                            :
+                            null}
                 </div>
-            <div className="detail_info distance">6,693km 거리</div>
-            <div className="detail_info day">7월 15일~20일</div>
-            <div className="detail_info price">\1,550,115 /박</div>
-        </div>
-
-        <div className="container">
-            <div id="main_img" style={{position: 'relative'}}>
-                <Swiper
-                    className={styles.main_detail}
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    navigation
-                    pagination={{ clickable: true }}
-                    >
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/miso/Hosting-555632030522710376/original/c8b5a0c1-0468-4402-a772-2b93d75366df.jpeg?im_w=720"/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/7c586cfa-6a5c-4ec1-8fcd-5890b6a50769.jpg?im_w=720"/>
-                    </SwiperSlide>                    
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/4ee4b710-db54-417a-a2ee-9a3500cd0879.jpg?im_w=720"/>
-                    </SwiperSlide>                    
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/e24c13b9-dd2a-4e15-9845-dd588a884e39.jpg?im_w=720"/>
-                    </SwiperSlide>                    
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
-                    </SwiperSlide>
-                </Swiper>
-                <svg 
-                    // onClick = {onClickLike}
-                    // style ={{fill: fill}} 
-                    className={styles.like_icon} 
-                    viewBox="0 0 32 32" 
-                    xmlns="http://www.w3.org/2000/svg" >
-                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
-                </svg>               
+                <div className="detail_info distance">{place.distance}</div>
+                <div className="detail_info day">{place.date}</div>
+                <div className="detail_info price">{place.price}</div>
             </div>
-
-            <div className={styles.first_line}>
-                <div className="detail_info title">Sail, Croatia 크로아티아</div>
-                <div>
-                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
-                    <span>NEW</span>
-                </div>
-            </div>
-            <div className="detail_info distance">8,658km 거리</div>
-            <div className="detail_info day">9월 24일~29일</div>
-            <div className="detail_info price">\194,136 /박</div>
-        </div>
-
-        <div className="container">
-            <div id="main_img" style={{position: 'relative'}}>
-                <Swiper
-                    className={styles.main_detail}
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    navigation
-                    pagination={{ clickable: true }}
-                    >
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/03bf7345-f535-4266-9bb1-b1a84d464d1c.jpg?im_w=720"/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/7c586cfa-6a5c-4ec1-8fcd-5890b6a50769.jpg?im_w=720"/>
-                    </SwiperSlide>                    
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/4ee4b710-db54-417a-a2ee-9a3500cd0879.jpg?im_w=720"/>
-                    </SwiperSlide>                    
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/e24c13b9-dd2a-4e15-9845-dd588a884e39.jpg?im_w=720"/>
-                    </SwiperSlide>                    
-                    <SwiperSlide>
-                        <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
-                    </SwiperSlide>
-                </Swiper>
-                <svg 
-                    // onClick = {onClickLike}
-                    // style ={{fill: fill}} 
-                    className={styles.like_icon} 
-                    viewBox="0 0 32 32" 
-                    xmlns="http://www.w3.org/2000/svg" >
-                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
-                </svg>            
-            </div>
-
-            <div className={styles.first_line}>
-                <div className="detail_info title">Murter, 크로아티아</div>
-                <div>
-                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
-                    <span>4.91</span>
-                </div>
-            </div>
-
-            <div className="detail_info distance">8,637km 거리</div>
-            <div className="detail_info day">10월 16일~23일</div>
-            <div className="detail_info price">\210,690 /박</div>
-        </div>
-
-        <div className="container">
-            <div id="main_img" style={{position: 'relative'}}>
-                <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/f62e1b1a-d6af-438b-82ce-95c51a4e0ca1.jpeg?im_w=720"/>
-                <svg 
-                    // onClick = {onClickLike}
-                    // style ={{fill: fill}} 
-                    className={styles.like_icon} 
-                    viewBox="0 0 32 32" 
-                    xmlns="http://www.w3.org/2000/svg" >
-                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
-                </svg>               
-            </div>
-
-            <div className={styles.first_line}>
-                <div className="detail_info title">MV, 몰디브</div>
-                <div>
-                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
-                    <span>4.67</span>
-                </div>
-            </div>
-
-            <div className="detail_info distance">6,596km 거리</div>
-            <div className="detail_info day">8월 18일~24일</div>
-            <div className="detail_info price">\886,626 /박</div>
-        </div>
-
-        <div className="container">
-            <div id="main_img" style={{position: 'relative'}}>
-                <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/miso/Hosting-555701192524977533/original/234db0e5-8ef3-45c4-9cf9-d2c5eb8ad0c0.jpeg?im_w=720"/>
-                <svg 
-                    // onClick = {onClickLike}
-                    // style ={{fill: fill}} 
-                    className={styles.like_icon} 
-                    viewBox="0 0 32 32" 
-                    xmlns="http://www.w3.org/2000/svg" >
-                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
-                </svg>               
-            </div>
-
-            <div className={styles.first_line}>
-                <div className="detail_info title">MV, 몰디브</div>
-                <div>
-                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
-                    <span>NEW</span>
-                </div>
-            </div>
-            <div className="detail_info distance">6,693km 거리</div>
-            <div className="detail_info day">7월 15일~20일</div>
-            <div className="detail_info price">\1,550,115 /박</div>
-        </div>
-
-        <div className="container">
-            <div id="main_img" style={{position: 'relative'}}>
-                <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/177ed8a7-557b-480f-8319-4f8330e2c692.jpg?im_w=720"/>
-                <svg onClick = {onClickLike}
-                    style ={{fill: fill}} 
-                    className={styles.like_icon} 
-                    viewBox="0 0 32 32" 
-                    xmlns="http://www.w3.org/2000/svg" >
-                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
-                </svg>               
-            </div>
-
-            <div className={styles.first_line}>
-                <div className="detail_info title">Sail, Croatia 크로아티아</div>
-                <div>
-                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
-                    <span>NEW</span>
-                </div>
-            </div>
-            <div className="detail_info distance">8,658km 거리</div>
-            <div className="detail_info day">9월 24일~29일</div>
-            <div className="detail_info price">\194,136 /박</div>
-        </div>
-
-        <div className="container">
-            <div id="main_img" style={{position: 'relative'}}>
-                <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/78fb8268-b999-4389-b072-e2a66910e41b.jpg?im_w=720"/>
-                <svg 
-                    // onClick = {onClickLike}
-                    // style ={{fill: fill}} 
-                    className={styles.like_icon} 
-                    viewBox="0 0 32 32" 
-                    xmlns="http://www.w3.org/2000/svg" >
-                    <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
-                </svg>               
-            </div>
-
-            <div className={styles.first_line}>
-                <div className="detail_info title">Murter, 크로아티아</div>
-                <div>
-                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
-                    <span>4.46</span>
-                </div>
-            </div>
-            <div className="detail_info distance">8,637km 거리</div>
-            <div className="detail_info day">10월 16일~23일</div>
-            <div className="detail_info price">\210,690 /박</div>
+            ))}
         </div>
     </div>  
     )
 }
 
 export default Main;
+
+        // <div className="container">
+        //     <div id="main_img" style={{position: 'relative'}}>
+        //         <Swiper
+        //             className={styles.main_detail}
+        //             spaceBetween={50}
+        //             slidesPerView={1}
+        //             navigation
+        //             pagination={{ clickable: true }}
+        //             >
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/2f15fd34-ad65-4b22-a276-50c298cbae3e.jpg?im_w=720"/>
+        //             </SwiperSlide>
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/7c586cfa-6a5c-4ec1-8fcd-5890b6a50769.jpg?im_w=720"/>
+        //             </SwiperSlide>                    
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/4ee4b710-db54-417a-a2ee-9a3500cd0879.jpg?im_w=720"/>
+        //             </SwiperSlide>                    
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/e24c13b9-dd2a-4e15-9845-dd588a884e39.jpg?im_w=720"/>
+        //             </SwiperSlide>                    
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
+        //             </SwiperSlide>
+        //         </Swiper>
+        //         <svg onClick = {onClickLike}
+        //             style ={{fill: fill}} 
+        //             className={styles.like_icon} 
+        //             viewBox="0 0 32 32" 
+        //             xmlns="http://www.w3.org/2000/svg" >
+        //             <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+        //         </svg>              
+        //     </div>
+
+        //         <div className={styles.first_line}>
+        //             <div className="detail_info title">MV, 몰디브</div>
+        //             <div>
+        //                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
+        //                 <span>4.96</span>
+        //             </div>
+        //         </div>
+        //     <div className="detail_info distance">6,693km 거리</div>
+        //     <div className="detail_info day">7월 15일~20일</div>
+        //     <div className="detail_info price">\1,550,115 /박</div>
+        // </div>
+
+        // <div className="container">
+        //     <div id="main_img" style={{position: 'relative'}}>
+        //         <Swiper
+        //             className={styles.main_detail}
+        //             spaceBetween={50}
+        //             slidesPerView={1}
+        //             navigation
+        //             pagination={{ clickable: true }}
+        //             >
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/miso/Hosting-555632030522710376/original/c8b5a0c1-0468-4402-a772-2b93d75366df.jpeg?im_w=720"/>
+        //             </SwiperSlide>
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/7c586cfa-6a5c-4ec1-8fcd-5890b6a50769.jpg?im_w=720"/>
+        //             </SwiperSlide>                    
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/4ee4b710-db54-417a-a2ee-9a3500cd0879.jpg?im_w=720"/>
+        //             </SwiperSlide>                    
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/e24c13b9-dd2a-4e15-9845-dd588a884e39.jpg?im_w=720"/>
+        //             </SwiperSlide>                    
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
+        //             </SwiperSlide>
+        //         </Swiper>
+        //         <svg onClick = {onClickLike}
+        //             style ={{fill: fill}} 
+        //             className={styles.like_icon} 
+        //             viewBox="0 0 32 32" 
+        //             xmlns="http://www.w3.org/2000/svg" >
+        //             <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+        //         </svg>               
+        //     </div>
+
+        //     <div className={styles.first_line}>
+        //         <div className="detail_info title">Sail, Croatia 크로아티아</div>
+        //         <div>
+        //             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
+        //             <span>NEW</span>
+        //         </div>
+        //     </div>
+        //     <div className="detail_info distance">8,658km 거리</div>
+        //     <div className="detail_info day">9월 24일~29일</div>
+        //     <div className="detail_info price">\194,136 /박</div>
+        // </div>
+
+        // <div className="container">
+        //     <div id="main_img" style={{position: 'relative'}}>
+        //         <Swiper
+        //             className={styles.main_detail}
+        //             spaceBetween={50}
+        //             slidesPerView={1}
+        //             navigation
+        //             pagination={{ clickable: true }}
+        //             >
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/03bf7345-f535-4266-9bb1-b1a84d464d1c.jpg?im_w=720"/>
+        //             </SwiperSlide>
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/7c586cfa-6a5c-4ec1-8fcd-5890b6a50769.jpg?im_w=720"/>
+        //             </SwiperSlide>                    
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/4ee4b710-db54-417a-a2ee-9a3500cd0879.jpg?im_w=720"/>
+        //             </SwiperSlide>                    
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/e24c13b9-dd2a-4e15-9845-dd588a884e39.jpg?im_w=720"/>
+        //             </SwiperSlide>                    
+        //             <SwiperSlide>
+        //                 <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/8d085e29-d5d6-4cd5-908b-38b05f4f669b.jpg?im_w=720"/>
+        //             </SwiperSlide>
+        //         </Swiper>
+        //         <svg onClick = {onClickLike}
+        //             style ={{fill: fill}} 
+        //             className={styles.like_icon} 
+        //             viewBox="0 0 32 32" 
+        //             xmlns="http://www.w3.org/2000/svg" >
+        //             <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+        //         </svg>            
+        //     </div>
+
+        //     <div className={styles.first_line}>
+        //         <div className="detail_info title">Murter, 크로아티아</div>
+        //         <div>
+        //             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
+        //             <span>4.91</span>
+        //         </div>
+        //     </div>
+
+        //     <div className="detail_info distance">8,637km 거리</div>
+        //     <div className="detail_info day">10월 16일~23일</div>
+        //     <div className="detail_info price">\210,690 /박</div>
+        // </div>
+
+        // <div className="container">
+        //     <div id="main_img" style={{position: 'relative'}}>
+        //         <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/f62e1b1a-d6af-438b-82ce-95c51a4e0ca1.jpeg?im_w=720"/>
+        //         <svg onClick = {onClickLike}
+        //             style ={{fill: fill}} 
+        //             className={styles.like_icon} 
+        //             viewBox="0 0 32 32" 
+        //             xmlns="http://www.w3.org/2000/svg" >
+        //             <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+        //         </svg>               
+        //     </div>
+
+        //     <div className={styles.first_line}>
+        //         <div className="detail_info title">MV, 몰디브</div>
+        //         <div>
+        //             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
+        //             <span>4.67</span>
+        //         </div>
+        //     </div>
+
+        //     <div className="detail_info distance">6,596km 거리</div>
+        //     <div className="detail_info day">8월 18일~24일</div>
+        //     <div className="detail_info price">\886,626 /박</div>
+        // </div>
+
+        // <div className="container">
+        //     <div id="main_img" style={{position: 'relative'}}>
+        //         <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/miso/Hosting-555701192524977533/original/234db0e5-8ef3-45c4-9cf9-d2c5eb8ad0c0.jpeg?im_w=720"/>
+        //         <svg onClick = {onClickLike}
+        //             style ={{fill: fill}} 
+        //             className={styles.like_icon} 
+        //             viewBox="0 0 32 32" 
+        //             xmlns="http://www.w3.org/2000/svg" >
+        //             <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+        //         </svg>               
+        //     </div>
+
+        //     <div className={styles.first_line}>
+        //         <div className="detail_info title">MV, 몰디브</div>
+        //         <div>
+        //             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
+        //             <span>NEW</span>
+        //         </div>
+        //     </div>
+        //     <div className="detail_info distance">6,693km 거리</div>
+        //     <div className="detail_info day">7월 15일~20일</div>
+        //     <div className="detail_info price">\1,550,115 /박</div>
+        // </div>
+
+        // <div className="container">
+        //     <div id="main_img" style={{position: 'relative'}}>
+        //         <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/177ed8a7-557b-480f-8319-4f8330e2c692.jpg?im_w=720"/>
+        //         <svg onClick = {onClickLike}
+        //             style ={{fill: fill}} 
+        //             className={styles.like_icon} 
+        //             viewBox="0 0 32 32" 
+        //             xmlns="http://www.w3.org/2000/svg" >
+        //             <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+        //         </svg>               
+        //     </div>
+
+        //     <div className={styles.first_line}>
+        //         <div className="detail_info title">Sail, Croatia 크로아티아</div>
+        //         <div>
+        //             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
+        //             <span>NEW</span>
+        //         </div>
+        //     </div>
+        //     <div className="detail_info distance">8,658km 거리</div>
+        //     <div className="detail_info day">9월 24일~29일</div>
+        //     <div className="detail_info price">\194,136 /박</div>
+        // </div>
+
+        // <div className="container">
+        //     <div id="main_img" style={{position: 'relative'}}>
+        //         <img className="detail_img" alt="detail_img" src="https://a0.muscache.com/im/pictures/78fb8268-b999-4389-b072-e2a66910e41b.jpg?im_w=720"/>
+        //         <svg onClick = {onClickLike}
+        //             style ={{fill: fill}} 
+        //             className={styles.like_icon} 
+        //             viewBox="0 0 32 32" 
+        //             xmlns="http://www.w3.org/2000/svg" >
+        //             <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+        //         </svg>               
+        //     </div>
+
+        //     <div className={styles.first_line}>
+        //         <div className="detail_info title">Murter, 크로아티아</div>
+        //         <div>
+        //             <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
+        //             <span>4.46</span>
+        //         </div>
+        //     </div> 
+        //     <div className="detail_info distance">8,637km 거리</div>
+        //     <div className="detail_info day">10월 16일~23일</div>
+        //     <div className="detail_info price">\210,690 /박</div>
+        // </div>
