@@ -80,7 +80,7 @@ body{
 
 .plan_filter {
 	border: 1px solid #dddddd;
-	width: fit-content;
+	width: max-content;
 	height: 48px;
 
 	border-radius: 40px;
@@ -133,6 +133,7 @@ button {
 	padding: 12px;
 	font-size: 14px;
 	font-weight: bold;
+	word-break: keep-all;
 }
 
 .wall_btn{
@@ -160,6 +161,7 @@ button {
 .mypage_icon {
 	padding-top: 5px;
 	padding-left: 9px;
+	padding-right: 3px;
 }
 
 .place_filter {
@@ -182,7 +184,6 @@ button {
 #main .filter_header{
 	padding: 0px 80px;
 	padding-top: 20px;
-	/* height: 98px; */
 }
 
 .detail_filter {

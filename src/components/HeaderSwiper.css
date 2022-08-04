@@ -48,7 +48,8 @@
 }
 
 .HeaderSwiper .swiper-item{
-  width: 1250px;
+  width: 92.5%;
+  margin-right: 24px;
 }
 
 .swiper-button-prev.swiper-button-disabled,
@@ -65,7 +66,7 @@
   padding: 15px 16px;
   border: 1px solid #DDDDDD;
   font-size: 12px;
-  width: fit-content;
+  width: max-content;
   height: fit-content;
 }
 
