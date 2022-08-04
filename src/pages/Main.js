@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, {useState, useEffect} from "react";
 import '../App.css';
 import styles from './Main.module.css';
-// import styled, { css } from 'styled-components';
+// import styled from 'styled-components';
 import place from '../data/TravelPlace.json'
 
 import MapContainer from '../components/MapContainer'
@@ -22,6 +22,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 SwiperCore.use([Navigation, Pagination])
 
 function Main() {
+    const [popup, setPopup] = useState(false);
+
+    const showPopup = (e) => {
+        if(popup===false){
+            setPopup(true)
+            }else{
+            setPopup(false)
+            }    
+        };
     
     const [viewMap, setViewMap] = useState(false)
 
@@ -34,6 +43,7 @@ function Main() {
     return (
     <div className="App">
       <div className="header">
+        {!popup ? (
         <div className="header_wrap">
             <div class = "header_content">
                 <Link to="/">
@@ -42,7 +52,7 @@ function Main() {
             </div>
 
             <div class = "header_content" id = "second_content">
-                <div className="plan_filter">
+                <div className="plan_filter" onClick={showPopup}>
                     <button className="btn_filter" alt="btn_filter">어디든지</button>
                     <span className="wall_btn"></span>
 
@@ -89,6 +99,93 @@ function Main() {
                 </button>
             </div>
         </div>
+        ) : 
+        <div id={styles.active_container}>
+            <div className="header_wrap">
+            <div class = "header_content">
+                <Link to="/">
+                    <img src={logo} alt="logo" style={{width:"102px", height:"32px"}}/>
+                </Link>
+            </div>
+
+            <div class = "header_content" id = {styles.active_second}>
+                <div className={styles.upper_filter}>
+                    <span>숙소</span>
+                    <span>체험</span>
+                    <span>온라인 체험</span>
+                </div>          
+            </div>
+
+            <div className= "header_content" id="third_content">
+                {/* <Link to="/behost"> */}
+                  <button className="header_btn" id="BeHost" onClick={onClickHost}>
+                    호스트 되기
+                  </button>
+                {/* </Link> */}
+                <button className="header_btn" style={{width:'40px', height:'42px'}}>
+                  <img src={earth} alt="earth" style={{width: '16px', height: "16px"}}/>
+                  </button>
+                <button className="mypage">
+                    <button className="mypage_icon"><img src={menu} alt = "menu" style={{width: "16px", height: "16px"}}/></button>
+                    <button className="mypage_icon"><img src={profile} alt="profile"style={{width: "30px", height: "30px"}}/></button>
+                </button>
+            </div>
+            </div>
+
+            <div className={styles.lower_filter} onClick={showPopup}>
+                <div className={styles.lower_item} id={styles.active_ex} style={{flexGrow:2}}>
+                    <div className={styles.lower_names}>
+                        여행지
+                    </div>
+
+                    <div className={styles.lower_details}>
+                        여행지 검색
+                    </div>
+                </div>
+
+                <div className={styles.lower_item} style={{flexGrow:1}}>
+                    <div className={styles.lower_names}>
+                        체크인
+                    </div>
+
+                    <div className={styles.lower_details}>
+                        날짜 입력
+                    </div>
+                </div>
+
+                <div className={styles.lower_item} style={{flexGrow:1}}>
+                    <div className={styles.lower_names}>
+                        체크아웃
+                    </div>
+
+                    <div className={styles.lower_details} >
+                        날짜 입력
+                    </div>
+                </div>
+
+                <div className={styles.lower_search} style={{flexGrow:1}}>
+                    <div className={styles.lower_item}>
+                        <div className={styles.lower_names}>
+                            여행자
+                        </div>
+
+                        <div className={styles.lower_details}>
+                            게스트 추가
+                        </div>
+                    </div>
+                    <button className={styles.popup_search}>
+                        <div>
+                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{fill: "none", height: "16px", width: "16px", stroke: "currentcolor", "stroke-width": 4, overflow: "visible"}}><g fill="none"><path d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9"></path></g></svg>
+                        </div>
+
+                        <div>
+                            검색
+                        </div>
+                    </button>
+                </div> 
+            </div>   
+        </div>
+        }
     </div>
 
     <div id="main">
