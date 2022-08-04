@@ -1,5 +1,6 @@
+/* eslint-disable array-callback-return */
 import { Link, useNavigate } from 'react-router-dom';
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import '../App.css';
 import styles from './Main.module.css';
 // import styled, { css } from 'styled-components';
@@ -106,24 +107,32 @@ function Main() {
   );
 }
 
-const TripList = () => {
+const TripList = ({id}, e) => {
     const [fill, setFill] = useState('rgba(0, 0, 0, 0.5)');
-
-    const onClickLike = () => {
-        fill === 'rgba(0, 0, 0, 0.5)' ? setFill('palevioletred'): setFill('rgba(0, 0, 0, 0.5)');
-        console.log("좋아요")
-    };
     
-    const kind = "섬" 
+    const kind = "섬"
     const kindList = place.place.filter(place => (place.kind === kind))
     // filter()를 사용해 kindList라는 새 배열을 만듦
     // place 객체 속의 kind는 위에서 변수 kind값이 됨.
 
+    // id값이 같을 때 like = true로 바꾸기
+    useEffect(() => {
+        kindList.map((list) => {
+            if(id === list.id)
+                kindList.like = true
+        })
+    },[id]);
+    
+    const OnClickLike = id => {
+        kindList.like ? setFill('palevioletred') : setFill('rgba(0, 0, 0, 0.5)');
+    }
+
     return(
     <div className="main_container">
         <div className={styles.sookso_container} style={{ textDecoration: 'none', color:"black"}}>
-        {kindList.map((place) => (
-            <div className={styles.container} key={place.id}>
+        {kindList.map((place) => ( //map 함수를 이용해 kindList 안의 원소를 검색한다.
+            <div className={styles.container} key={place.id}> 
+            {/* key값을 kindList원소(place) 안의  id로 지정*/}
                 <div key={place.kind} id="main_img" style={{position: 'relative'}}>
                     <Link to="/Detail">
                         <Swiper
@@ -150,8 +159,8 @@ const TripList = () => {
                             </SwiperSlide>
                         </Swiper>
                     </Link>
-                    <svg onClick = {onClickLike}
-                        id={1}
+                    <svg onClick = {OnClickLike}
+                        id={place.id}
                         style ={{fill: fill}} 
                         className={styles.like_icon} 
                         viewBox="0 0 32 32" 
@@ -169,8 +178,7 @@ const TripList = () => {
                                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height: "12px", width: "12px", fill: "currentcolor"}}><path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd"></path></svg>
                                 <span>NEW</span>
                             </div>
-                            :
-                            null}
+                            : null}
                 </div>
                 <div className="detail_info distance">{place.distance}</div>
                 <div className="detail_info day">{place.date}</div>
