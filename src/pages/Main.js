@@ -53,6 +53,24 @@ function Main() {
                         <div style={{padding: '0px 16px'}}>게스트 추가</div>
                         <div className="searchicon"><img src={search} alt="search" style={{width: '12px', height: '12px;'}}/></div>
                     </button>
+
+                    <button className={styles.activeSearch}>
+                        <div style={{display: 'flex'}}>
+                            <div style={{"padding-right":"16px", "align-self":"center"}}>
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{height: "16px", width: "16px"}}><path d="M13 0c7.18 0 13 5.82 13 13 0 2.868-.929 5.519-2.502 7.669l7.916 7.917-2.828 2.828-7.917-7.916A12.942 12.942 0 0 1 13 26C5.82 26 0 20.18 0 13S5.82 0 13 0zm0 4a9 9 0 1 0 0 18 9 9 0 0 0 0-18z" opacity=".8"></path></svg>
+                            </div>
+
+                            <div>
+                                <div className={styles.small_search}>
+                                    어디로 여행가세요?
+                                </div>
+                                <div className={styles.small_detail}>
+                                    어디든지 • 언제든 일주일 • 게스트 추가
+                                </div>
+                            </div>
+                        </div>
+                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style={{height: "16px", width: "16px", fill: "rgb(34, 34, 34)"}}><path d="M5 8c1.306 0 2.418.835 2.83 2H14v2H7.829A3.001 3.001 0 1 1 5 8zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6-8a3 3 0 1 1-2.829 4H2V4h6.17A3.001 3.001 0 0 1 11 2zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path></svg>
+                    </button>
                 </div>                
             </div>
 
@@ -92,6 +110,7 @@ function Main() {
                     <svg viewBox="0 0 32 32" style={{display:"block", height:"16px", width: "16px", fill:"#FFFFFF"}}><path d="M31.245 3.747a2.285 2.285 0 0 0-1.01-1.44A2.286 2.286 0 0 0 28.501 2l-7.515 1.67-10-2L2.5 3.557A2.286 2.286 0 0 0 .7 5.802v21.95a2.284 2.284 0 0 0 1.065 1.941A2.29 2.29 0 0 0 3.498 30l7.515-1.67 10 2 8.484-1.886a2.285 2.285 0 0 0 1.802-2.245V4.247a2.3 2.3 0 0 0-.055-.5zM12.5 25.975l-1.514-.303L9.508 26H9.5V4.665l1.514-.336 1.486.297v21.349zm10 1.36l-1.515.337-1.485-.297V6.025l1.514.304L22.493 6h.007v21.335z"></path></svg>
                 </button>
                 <Footer />
+                
                 </>
                 :
                 <button class={styles.btn_maplist} id = {styles.btn_list} onClick={() => setViewMap(false)}>
@@ -100,6 +119,27 @@ function Main() {
                 </button>
                 }
                 
+            </div>
+
+            <div className={styles.small_footer}>
+                <div>
+                    
+                    <div>
+                        둘러보기
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        위시리스트
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        로그인
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -137,7 +177,7 @@ const TripList = ({id}, e) => {
                     <Link to="/Detail">
                         <Swiper
                             className={styles.main_detail}
-                            spaceBetween={50}
+                            // spaceBetween={50}
                             slidesPerView={1}
                             navigation
                             pagination={{ clickable: true }}

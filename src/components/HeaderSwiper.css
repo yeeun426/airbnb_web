@@ -14,6 +14,10 @@
   right: 0px;
 }
 
+.HeaderSwiper div {
+  word-break: keep-all;
+}
+
 .swiper-button-prev, .swiper-button-next{
   background-color: white;
   background-size: 17px 17px;

@@ -109,8 +109,8 @@ transform: scale(1.04)
 	border-radius: 22px;
 }
 
-.main_detail{
-    width: 322px;
+.main_details {
+    height: 100%;
 }
 
 :global .main_container .swiper-button-next,
@@ -125,6 +125,113 @@ transform: scale(1.04)
 .sookso_container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: repeat(auto, 1fr);
-    grid-gap: 24px;
+    grid-gap: 40px 24px;
 }
+
+.activeSearch {
+    display: none;
+}
+
+.small_search {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.small_detail {
+    font-size: 12px;
+    color: #717171;
+}
+/* 1128px보다 클 때 */
+@media (min-width: 1128px)  {
+    .container{
+        width: 20.5vw;
+        height: max-content;
+    }
+
+    :global #main_img {
+        height: 20vw;
+    }
+}
+
+/* 1128px보다 작을 때 */
+@media (max-width: 1128px) {
+    .sookso_container{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .container{
+        width: 28vw;
+    }
+    :global #main_img {
+        height: 28vw;
+    }
+    :global .main_container {
+        padding: 0 40px;
+    }
+    :global #main .filter_header{
+        padding: 0px 40px;
+        padding-top: 20px;
+    }
+}
+
+/* 950px보다 작을 때 */
+@media (max-width: 950px) {
+    .sookso_container{
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .container{
+        width: 42vw !important;
+    }
+    :global #main_img {
+        height: 42vw !important;
+    }
+    .btn_map {
+		display: none;
+	}
+}
+
+/* 740px보다 작을 때 */
+@media (max-width: 740px) {
+    :global .header_content img{
+        display: none;
+    }
+    :global #third_content {
+        display: none;
+    }
+    :global .plan_filter > *{
+        display: none;
+    }
+    :global .header_wrap {
+        padding: 0 30px;
+    }
+    :global .plan_filter {
+        width: 88vw;
+    }
+    :global #addguest {
+        display: none;
+    }
+    .activeSearch{
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+        height: 100%;
+        align-items: center;
+        text-align: left;    }
+}
+
+/* 550px보다 작을 때 */
+@media (max-width: 550px) {
+	.sookso_container {
+        display:block;
+    }
+    .container{
+        width: 80vw !important;
+    }
+    :global #main_img {
+        height: 80vw !important;
+    }
+    :global .plan_filter {
+        width: 84vw;
+    }
+}
+
+

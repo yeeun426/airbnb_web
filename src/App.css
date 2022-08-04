@@ -48,6 +48,10 @@ table {
 }
 
 /* 시작 */
+body{
+	overflow-x: hidden;
+}
+
 .header {
     border-bottom : 1px solid #dddddd;
     height: 80px;
@@ -193,8 +197,8 @@ button {
 }
 
 .detail_img {
-	width: 322px;
-	height: 306px;
+	width: 100%;
+	height: 100%;
 	border-radius: 15px;
 	object-fit: cover;
 	vertical-align: bottom;
@@ -215,14 +219,7 @@ button {
 }
 
 .main_container {
-	margin-top: 16px;
 	padding: 0px 80px 90px 80px;
-
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: repeat(auto, 1fr);
-
-	grid-gap: 24px;
 }
 
 .first_right {
@@ -300,4 +297,9 @@ button {
 
 #main_img:hover .swiper-button-next, #main_img:hover .swiper-button-prev {
 	display: flex;
+}
+
+.swiper {
+    height: 100%;
+	border-radius: 15px;
 }
