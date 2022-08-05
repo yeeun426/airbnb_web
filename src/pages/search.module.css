@@ -1,0 +1,45 @@
+.txt_info{
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-size: 14px;
+    font-weight: bold;
+    align-items: center;
+}
+
+.txt_info button{
+    display: flex;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 16px;
+}
+
+.txt_info button svg {
+    padding-right: 5px;
+}
+.search_container{
+    width: 720px;
+}
+
+.map_container{
+    width: 100%;
+    background-color: black;
+}
+
+.main_container{
+    margin-top: 16px;
+    padding: 0 24px;
+}
+
+.sookso_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px 24px;
+}
+
+.container{
+    display: flex;
+}
