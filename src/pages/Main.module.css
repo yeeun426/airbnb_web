@@ -207,9 +207,10 @@ transform: scale(1.04)
     padding-bottom: 2px;
 }
 
-.lower_details{
+.lower_details input{
+    border: none;
     font-size: 14px;
-    color: #222222;
+    padding: 0;
 }
 
 .popup_search {
@@ -248,6 +249,47 @@ transform: scale(1.04)
 .active_container {
     display: flex;
     flex-direction: column;
+}
+
+.header_modal {
+    left: 22%;
+    position: fixed;
+    max-height: calc(100vh - 150px);
+    max-width: 848px;
+    width: fit-content;
+    padding: 32px 40px;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
+    border-radius: 32px;
+}
+
+.hd_item{
+    width: 132px;
+    height: 158px;
+}
+
+.hd_img img{
+    width: 100%;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+}
+
+.hd_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 24px 15px;
+}
+
+.hd_title {
+    margin: 0 0 28px 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.hd_txt{
+    font-size: 14px;
+    margin: 8px 2px 0;
 }
 
 /* 1128px보다 클 때 */
