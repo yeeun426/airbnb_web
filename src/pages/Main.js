@@ -4,7 +4,7 @@ import React, {useState, useEffect} from "react";
 
 import '../App.css';
 import styles from './Main.module.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import place from '../data/TravelPlace.json'
 
@@ -23,6 +23,7 @@ import HeaderSwiper from '../components/HeaderSwiper';
 
 import SwiperCore,{ Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
+// import HeartButton from '../components/HeartButton';
 
 SwiperCore.use([Navigation, Pagination])
 
@@ -332,48 +333,36 @@ function Main() {
   );
 }
 
-const TripList = ({id}, e) => {
-    const [fill, setFill] = useState([]);
-    const [color, setColor] = useState('rgba(0,0,0,0.5)');
 
-    const kind = "섬"
-    const kindList = place.place.filter(place => (place.kind === kind))
+const TripList = (props) => {
+    const [like,setLike] = useState([]);
+
     // filter()를 사용해 kindList라는 새 배열을 만듦
     // place 객체 속의 kind는 위에서 변수 kind값이 됨.
-    
+    const kind = "섬"
+    const kindList = place.place.filter(place => (place.kind === kind))
+
+    // useEffect(() => {   
+    // }, [like.like]);
+
+
+    const toggleLike = (e) => {
+        place.place[e.currentTarget.id-1].like
+            ? place.place[e.currentTarget.id-1].like = false
+            : place.place[e.currentTarget.id-1].like = true
+
+        kindList.map((item) => {
+            if(kindList[e.currentTarget.id-1].id === item.id) 
+                setLike(item);
+        })
+        console.log(like.like)
+
+    }   
+
+
     // 클릭하면 id값 받아오기
     //받아온 id값의 like를 true로 바꿈
-    const OnClickLike = (e) => {
-        // eslint-disable-next-line no-lone-blocks
-        {!kindList[e.target.farthestViewportElement.id-1].like 
-        ?
-        kindList[e.target.farthestViewportElement.id-1].like = true
-        :
-        kindList[e.target.farthestViewportElement.id-1].like = false
-        }
 
-        console.log(kindList[0].like)
-        console.log(kindList[1].like)
-        console.log(kindList[2].like)
-
-    }
-
-    // useEffect(() => {
-    //     // eslint-disable-next-line array-callback-return
-    //     kindList.map((item) => {
-    //         if(id === item.id) {
-    //             kindList[id-1].like ?
-    //             setColor('pink')
-    //             : setColor('white')
-    //             }
-    //         }
-    //     )
-    // }, [id])
-
-    //for문 돌려서 배열 안에 있는 like=true만 색깔 바꾸기
-    // const onClickArea = (e) => {
-    //     setCountry(document.activeElement.id);
-    // }
 
     return(
     <div className="main_container">
@@ -407,15 +396,26 @@ const TripList = ({id}, e) => {
                             </SwiperSlide>
                         </Swiper>
                     </Link>
-
-                    <svg onClick = {OnClickLike}
-                        id={place.id}
-                        style={{fill:color}}
-                        className={fill.like ? styles.like_pink : styles.like_icon}
-                        viewBox="0 0 32 32" 
-                        xmlns="http://www.w3.org/2000/svg" >
-                        <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
-                    </svg>
+                    {/* <HeartButton like={like} onClick={toggleLike}/> */}
+                    {place.like?
+                        <svg onClick={toggleLike}
+                            id={place.id}
+                            style={{fill:"red"}}
+                            className={styles.like_icon}
+                            viewBox="0 0 32 32" 
+                            xmlns="http://www.w3.org/2000/svg" >
+                            <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+                        </svg>
+                        : 
+                        <svg onClick={toggleLike}
+                            id={place.id}
+                            style={{fill:"rgba(0,0,0,0.5)"}}
+                            className={styles.like_icon}
+                            viewBox="0 0 32 32" 
+                            xmlns="http://www.w3.org/2000/svg" >
+                            <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"></path>
+                        </svg>
+                    }
                 </div>
 
                 <div className={styles.first_line}>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import host_data from '../data/behost.json';
 import '../pages/Behost.css'
 
-const HostSlider = ({id}, e) => {
+const HostSlider = ({id}) => {
 
     const [data, setDetail] = useState([]);
     //data를 배열로 선언
